@@ -1,0 +1,55 @@
+09:12:28\elli:Project5$ 
+09:12:28\elli:Project5$ ./memMaps A
+PART A:
+Mapping READ ONLY file.
+1+0 records in
+1+0 records out
+8195 bytes (8.2 kB) copied, 0.00162975 s, 5.0 MB/s
+Signal "Segmentation fault" received on command!
+09:12:29\elli:Project5$ 
+09:12:30\elli:Project5$ 
+09:12:30\elli:Project5$ ./memMaps B
+PART B:
+Mapping READ/WRITE file of type MAP_SHARED.
+1+0 records in
+1+0 records out
+8195 bytes (8.2 kB) copied, 0.00104824 s, 7.8 MB/s
+Changing data stored in memory map.
+IMMEDIATE MATCH from original file.
+09:12:32\elli:Project5$ 
+09:12:33\elli:Project5$ 
+09:12:33\elli:Project5$ ./memMaps C
+PART C:
+Mapping READ/WRITE file of type MAP_PRIVATE.
+1+0 records in
+1+0 records out
+8195 bytes (8.2 kB) copied, 0.00102085 s, 8.0 MB/s
+Changing data stored in memory map.
+DID NOT MATCH from original file.
+09:12:35\elli:Project5$ 
+09:12:35\elli:Project5$ 
+09:12:36\elli:Project5$ ./memMaps D
+PART D/E:
+Mapping READ/WRITE file of type MAP_PRIVATE.
+Writing at offset 8195 in memory map1+0 records in
+1+0 records out
+8195 bytes (8.2 kB) copied, 0.00161904 s, 5.1 MB/s
+Memory dump starting at offset 8195:
+<44> <45> <46> 
+Size Unchanged (8195 bytes)
+
+File dump starting at offset 8195
+<44> <45> <46> <00> <00> <00> <00> <00> <00> <00> <53> <74> <75> <66> <66> 
+YUP, the Data previously written to the hole remain.
+09:12:37\elli:Project5$ 
+09:12:50\elli:Project5$ 
+09:12:50\elli:Project5$ ./memMaps F
+PART F:
+Mapping small file to 2 pages.
+1+0 records in
+1+0 records out
+10 bytes (10 B) copied, 0.000152239 s, 65.7 kB/s
+Attempting to access memory from second page.
+Signal "Bus error" received on command!
+Attempting to access memory from first page.
+

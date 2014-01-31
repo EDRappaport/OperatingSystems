@@ -1,0 +1,19 @@
+#!/bin/bash
+
+output=$1
+
+echo "">${output}
+
+k=1
+for (( i = 1; i < 262145; i=i*2 )); do
+	for (( j = 0; j < 10; j++ )); do
+		command="./copycat -b $i -o OutputFile_${i} In1.txt"
+		utime=$( TIMEFORMAT='%E';time (${command}) 2>&1 1>/dev/null )
+		t[${j}]=${utime}
+	done
+	echo "t(${k},:) = [${t[@]}];" >> ${output}
+	echo "b(${k}) = ${i};" >> ${output}
+	k=$(( ${k} + 1 ))
+done
+
+
